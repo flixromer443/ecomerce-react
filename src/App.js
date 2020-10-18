@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import LabelBottomNavigation from './Components/Nav';
+import DenseAppBar from './Components/Header';
+import Home from './Pages/Home';
+import {BrowserRouter as Router,Link,Route,Switch} from 'react-router-dom'
+import './Styles/App.css';
+import Login from './Pages/Login';
+import Registro from './Pages/Registro';
+import Detalle from './Pages/Detalle';
+
+
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+      <DenseAppBar/>
+        
+        <Route exact path="/" component={Home} />
+        <Route path="/Pages/Login" component={Login} />
+        <Route path="/Pages/Registro" component={Registro} />
+        <Route path="/Pages/Detalle/:id" component={Detalle} />
+      <LabelBottomNavigation />
+
+      </div>
+    </Router>
   );
 }
 
